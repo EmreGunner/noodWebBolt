@@ -30,22 +30,22 @@ const testimonials = [
 
 const Home: React.FC = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="w-full"
-    >
+    <div className="w-full">
       <Hero />
       
-      <div className="space-y-20">
-        <section className="py-20 bg-accent rounded-3xl">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <section className="py-20 bg-gradient-to-b from-accent to-background">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-12 text-center text-text">Our Offerings</h2>
+            <h2 className="section-title mb-12">Our Offerings</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <motion.div
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+                className="card"
                 whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
                 <BookOpen className="text-primary mb-4" size={48} />
                 <h3 className="text-2xl font-bold mb-4 text-text">NOOD Academy</h3>
@@ -55,8 +55,9 @@ const Home: React.FC = () => {
                 </Link>
               </motion.div>
               <motion.div
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+                className="card"
                 whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
                 <Users className="text-primary mb-4" size={48} />
                 <h3 className="text-2xl font-bold mb-4 text-text">NOOD Community</h3>
@@ -69,15 +70,16 @@ const Home: React.FC = () => {
           </div>
         </section>
 
-        <section className="py-20">
+        <section className="py-20 bg-background">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-12 text-center text-text">Success Stories</h2>
+            <h2 className="section-title mb-12">Success Stories</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {testimonials.map((testimonial) => (
                 <motion.div
                   key={testimonial.id}
-                  className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+                  className="card"
                   whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
                   <img src={testimonial.image} alt={testimonial.name} className="w-20 h-20 rounded-full mx-auto mb-4" />
                   <h3 className="text-lg font-semibold mb-2">{testimonial.name}</h3>
@@ -89,9 +91,9 @@ const Home: React.FC = () => {
           </div>
         </section>
 
-        <section className="py-20 bg-accent rounded-3xl">
+        <section className="py-20 bg-accent">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-6 text-text">Ready to Start Your Journey?</h2>
+            <h2 className="section-title mb-6">Ready to Start Your Journey?</h2>
             <p className="text-xl mb-8 text-text max-w-2xl mx-auto">
               Whether you're looking to learn new skills, grow your business, or join a community of like-minded individuals, Nood has something for you.
             </p>
@@ -100,8 +102,8 @@ const Home: React.FC = () => {
             </Link>
           </div>
         </section>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   )
 }
 
