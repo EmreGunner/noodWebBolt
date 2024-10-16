@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, X, BookOpen, Users, User, FileText } from 'lucide-react'
+import Icon from './Icon'
+import Logo from './Logo'
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navItems = [
-    { to: "/academy", icon: BookOpen, text: "Academy" },
-    { to: "/community", icon: Users, text: "Community" },
-    { to: "/dashboard", icon: User, text: "Dashboard" },
-    { to: "/blog", icon: FileText, text: "Blog" },
+    { to: "/academy", icon: "BookOpen", text: "Academy" },
+    { to: "/community", icon: "Users", text: "Community" },
+    { to: "/dashboard", icon: "User", text: "Dashboard" },
+    { to: "/blog", icon: "FileText", text: "Blog" },
   ]
 
   return (
@@ -17,7 +18,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="text-2xl font-bold text-primary">
-            NOOD
+            <Logo />
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => (
@@ -26,7 +27,7 @@ const Header: React.FC = () => {
                 to={item.to} 
                 className="text-text hover:text-primary transition duration-300 flex items-center border-b-2 border-transparent hover:border-primary"
               >
-                <item.icon className="mr-1" size={18} />
+                <Icon name={item.icon as any} size={18} className="mr-1" />
                 {item.text}
               </Link>
             ))}
@@ -39,7 +40,7 @@ const Header: React.FC = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <Icon name={isMenuOpen ? "X" : "Menu"} size={24} />
           </button>
         </div>
         {isMenuOpen && (
@@ -52,7 +53,7 @@ const Header: React.FC = () => {
                     className="text-text hover:text-primary transition duration-300 flex items-center py-2 border-b border-accent" 
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    <item.icon className="mr-2" size={18} />
+                    <Icon name={item.icon as any} size={18} className="mr-2" />
                     {item.text}
                   </Link>
                 </li>

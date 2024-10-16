@@ -7,11 +7,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#84bb75',
-        secondary: '#5d8a54',
-        background: '#ffffff',
-        text: '#000000',
-        accent: '#f0f7ed',
+        primary: '#4e9350',
+        secondary: '#83bf75',
+        background: '#e0e5ba',
+        text: '#354b4e',
+        accent: '#83bf75',
+      },
+      fontFamily: {
+        sans: ['Open Sans', 'sans-serif'], // Placeholder for Scala Sans
+      },
+      screens: {
+        'xs': '480px',
+        // Other breakpoints remain default
       },
     },
   },
