@@ -48,7 +48,7 @@ const Home: React.FC = () => {
           <h2 className="text-3xl font-bold mb-12 text-center text-text">Embark on Your Digital Journey</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+              className="card"
               whileHover={{ scale: 1.05 }}
             >
               <BookOpen className="text-primary mb-4" size={48} />
@@ -59,7 +59,7 @@ const Home: React.FC = () => {
               </Link>
             </motion.div>
             <motion.div
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+              className="card"
               whileHover={{ scale: 1.05 }}
             >
               <Users className="text-primary mb-4" size={48} />
@@ -113,7 +113,7 @@ const Home: React.FC = () => {
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.id}
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+                className="card"
                 whileHover={{ scale: 1.05 }}
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}

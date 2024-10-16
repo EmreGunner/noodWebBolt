@@ -8,6 +8,7 @@ import Academy from './pages/Academy'
 import Community from './pages/Community'
 import Dashboard from './pages/Dashboard'
 import Blog from './pages/Blog'
+import CourseDetail from './pages/CourseDetail'
 
 const AnimatedRoutes = () => {
   const location = useLocation()
@@ -16,6 +17,7 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/academy" element={<Academy />} />
+        <Route path="/academy/:courseName" element={<CourseDetail />} />
         <Route path="/community" element={<Community />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/blog" element={<Blog />} />

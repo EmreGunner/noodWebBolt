@@ -72,7 +72,7 @@ const Academy: React.FC = () => {
           {filteredCourses.map((course, index) => (
             <motion.div
               key={course.name}
-              className="bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300"
+              className="card"
               whileHover={{ scale: 1.05 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
             Master digital skills for entrepreneurship with our expert-led courses
           </p>
           <Link 
-            to="/programs" 
+            to="/academy" 
             className="btn-primary inline-flex items-center text-lg px-8 py-3 rounded-lg hover:bg-opacity-90 transition duration-300"
           >
             Explore Our Programs <ArrowRight className="ml-2" size={20} />
