@@ -59,7 +59,11 @@ const Academy: React.FC = () => {
         <h2 className="text-2xl font-bold mb-6">{t('featuredCourses')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCourses.map(course => (
-            <Link key={course.name} to={`/academy/${course.name.toLowerCase().replace(/\s+/g, '-')}`} className="nood-card group hover:shadow-xl transition duration-300">
+            <Link 
+              key={course.name} 
+              to={`/academy/${course.name.toLowerCase().replace(/\s+/g, '-')}`} 
+              className="nood-card group hover:shadow-xl transition duration-300"
+            >
               <img src={course.coursePhoto} alt={course.name} className="w-full h-48 object-cover rounded-t-2xl" />
               <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition duration-300">{course.name}</h3>
@@ -74,7 +78,13 @@ const Academy: React.FC = () => {
                   <Calendar size={16} className="mr-1" />
                   <span>{t('startDate')}: {new Date(course.startDate).toLocaleDateString()}</span>
                 </div>
-                <button className="btn-primary text-sm px-4 py-2 w-full block text-center group-hover:bg-secondary transition duration-300" onClick={(e) => { e.preventDefault(); window.open(`/academy/${course.name.toLowerCase().replace(/\s+/g, '-')}`, '_blank'); }}>
+                <button 
+                  className="btn-primary text-sm px-4 py-2 w-full block text-center group-hover:bg-secondary transition duration-300"
+                  onClick={(e) => { 
+                    e.preventDefault(); 
+                    window.location.href = `/academy/${course.name.toLowerCase().replace(/\s+/g, '-')}`;
+                  }}
+                >
                   {t('apply')}
                 </button>
               </div>
