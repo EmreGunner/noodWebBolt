@@ -1,42 +1,62 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
+import Logo from './Logo'
+import Icon from './Icon'
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-secondary text-white py-12">
-      <div className="container mx-auto px-4">
+    <footer className="bg-primary text-white">
+      <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-xl font-bold mb-4">NOOD</h3>
-            <p className="text-sm">Empowering entrepreneurs and freelancers with targeted skills and expert guidance for digital business success.</p>
+          <div className="col-span-1 md:col-span-2">
+            <Logo variant="dark" />
+            <p className="mt-4 text-sm text-white">
+              Empowering creators and entrepreneurs with expert-led courses and personalized guidance.
+            </p>
+            <div className="mt-4 flex space-x-4">
+              <a href="#" className="text-white hover:text-accent transition-colors">
+                <Icon name="Facebook" />
+              </a>
+              <a href="#" className="text-white hover:text-accent transition-colors">
+                <Icon name="Twitter" />
+              </a>
+              <a href="#" className="text-white hover:text-accent transition-colors">
+                <Icon name="Instagram" />
+              </a>
+              <a href="#" className="text-white hover:text-accent transition-colors">
+                <Icon name="Linkedin" />
+              </a>
+            </div>
           </div>
           <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+            <h3 className="text-lg font-semibold mb-4 text-white">Quick Links</h3>
             <ul className="space-y-2">
-              <li><Link to="/academy" className="hover:text-accent transition duration-300">Academy</Link></li>
-              <li><Link to="/agency" className="hover:text-accent transition duration-300">Agency</Link></li>
-              <li><Link to="/community" className="hover:text-accent transition duration-300">Community</Link></li>
-              <li><Link to="/dashboard" className="hover:text-accent transition duration-300">Dashboard</Link></li>
+              <li><Link to="/academy" className="text-white hover:text-accent transition-colors">Academy</Link></li>
+              <li><Link to="/community" className="text-white hover:text-accent transition-colors">Community</Link></li>
+              <li><Link to="/blog" className="text-white hover:text-accent transition-colors">Blog</Link></li>
+              <li><Link to="/about" className="text-white hover:text-accent transition-colors">About Us</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
-            <p className="text-sm">Email: info@nood.com</p>
-            <p className="text-sm">Phone: +1 (555) 123-4567</p>
-          </div>
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
-            <div className="flex space-x-4">
-              <a href="#" className="hover:text-accent transition duration-300" aria-label="Facebook"><Facebook /></a>
-              <a href="#" className="hover:text-accent transition duration-300" aria-label="Twitter"><Twitter /></a>
-              <a href="#" className="hover:text-accent transition duration-300" aria-label="Instagram"><Instagram /></a>
-              <a href="#" className="hover:text-accent transition duration-300" aria-label="LinkedIn"><Linkedin /></a>
-            </div>
+            <h3 className="text-lg font-semibold mb-4 text-white">Contact Us</h3>
+            <ul className="space-y-2">
+              <li className="flex items-center">
+                <Icon name="Mail" size={16} className="text-white mr-2" />
+                <a href="mailto:info@nood.com" className="text-white hover:text-accent transition-colors">info@nood.com</a>
+              </li>
+              <li className="flex items-center">
+                <Icon name="Phone" size={16} className="text-white mr-2" />
+                <a href="tel:+1234567890" className="text-white hover:text-accent transition-colors">+1 (234) 567-890</a>
+              </li>
+              <li className="flex items-center">
+                <Icon name="MapPin" size={16} className="text-white mr-2" />
+                <span className="text-white">123 Nood Street, City, Country</span>
+              </li>
+            </ul>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-accent border-opacity-20 text-center text-sm">
-          <p>&copy; 2023 NOOD. All rights reserved.</p>
+        <div className="mt-8 pt-8 border-t border-white/20 text-center text-sm text-white">
+          <p>&copy; {new Date().getFullYear()} Nood. All rights reserved.</p>
         </div>
       </div>
     </footer>

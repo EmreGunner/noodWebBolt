@@ -20,7 +20,23 @@ export default {
         'xs': '480px',
         // Other breakpoints remain default
       },
+      textShadow: {
+        'default': '0 2px 4px rgba(0,0,0,0.10)',
+        'lg': '0 2px 6px rgba(0,0,0,0.20)',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.text-shadow': {
+          textShadow: '0 2px 4px rgba(0,0,0,0.10)',
+        },
+        '.text-shadow-lg': {
+          textShadow: '0 2px 6px rgba(0,0,0,0.20)',
+        },
+      }
+      addUtilities(newUtilities, ['responsive', 'hover'])
+    }
+  ],
 }

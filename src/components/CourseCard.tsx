@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Icon from './Icon';
 import FocusWrapper from './FocusWrapper';
+import BrandedImage from './BrandedImage';
 
 interface CourseCardProps {
   id: string;
@@ -17,7 +18,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ id, title, description, duratio
     <FocusWrapper>
       <Link to={`/course/${id}`} className="block">
         <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 border border-accent hover:border-primary">
-          <img src={image} alt={title} className="w-full h-48 object-cover" />
+          <BrandedImage src={image} alt={title} className="w-full h-48" />
           <div className="p-6">
             <h3 className="text-xl font-semibold mb-2">{title}</h3>
             <p className="text-text mb-4">{description}</p>
