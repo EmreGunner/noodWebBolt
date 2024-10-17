@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ArrowRight, Calendar, Search } from 'lucide-react'
+import { motion } from 'framer-motion'
 import courses from '../data/courses.json'
+import Card from '../components/Card'
+import Button from '../components/Button'
 
 const Academy: React.FC = () => {
   const [selectedType, setSelectedType] = useState<string | null>(null)
@@ -15,7 +18,7 @@ const Academy: React.FC = () => {
   )
 
   return (
-    <div className="space-y-12">
+    <div className="container mx-auto px-4 py-8 space-y-12">
       <section className="text-center">
         <h1 className="text-4xl font-bold mb-4 nood-gradient-text">{t('academy.title')}</h1>
         <p className="text-xl text-text max-w-3xl mx-auto">
@@ -24,32 +27,35 @@ const Academy: React.FC = () => {
       </section>
 
       <section>
-        <div className="flex justify-between items-center mb-8">
-          <div className="flex space-x-4">
-            <button
-              className={`px-4 py-2 rounded-full ${selectedType === null ? 'bg-primary text-white' : 'bg-gray-200 text-text'} hover:bg-opacity-80 transition duration-300`}
+        <div className="flex flex-col md:flex-row justify-between items-center mb-8 space-y-4 md:space-y-0">
+          <div className="flex flex-wrap justify-center md:justify-start space-x-4">
+            <Button
               onClick={() => setSelectedType(null)}
+              variant={selectedType === null ? 'primary' : 'outline'}
+              className="mb-2 md:mb-0"
             >
               {t('all')}
-            </button>
-            <button
-              className={`px-4 py-2 rounded-full ${selectedType === 'Virtual' ? 'bg-primary text-white' : 'bg-gray-200 text-text'} hover:bg-opacity-80 transition duration-300`}
+            </Button>
+            <Button
               onClick={() => setSelectedType('Virtual')}
+              variant={selectedType === 'Virtual' ? 'primary' : 'outline'}
+              className="mb-2 md:mb-0"
             >
               {t('virtual')}
-            </button>
-            <button
-              className={`px-4 py-2 rounded-full ${selectedType === 'Physical' ? 'bg-primary text-white' : 'bg-gray-200 text-text'} hover:bg-opacity-80 transition duration-300`}
+            </Button>
+            <Button
               onClick={() => setSelectedType('Physical')}
+              variant={selectedType === 'Physical' ? 'primary' : 'outline'}
+              className="mb-2 md:mb-0"
             >
               {t('physical')}
-            </button>
+            </Button>
           </div>
-          <div className="relative">
+          <div className="relative w-full md:w-auto">
             <input
               type="text"
               placeholder={t('searchCourses')}
-              className="pl-10 pr-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full md:w-64 pl-10 pr-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-primary"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -57,38 +63,38 @@ const Academy: React.FC = () => {
           </div>
         </div>
         <h2 className="text-2xl font-bold mb-6">{t('featuredCourses')}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCourses.map(course => (
-            <Link 
-              key={course.name} 
-              to={`/academy/${course.name.toLowerCase().replace(/\s+/g, '-')}`} 
-              className="nood-card group hover:shadow-xl transition duration-300"
+            <motion.div
+              key={course.name}
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.2 }}
             >
-              <img src={course.coursePhoto} alt={course.name} className="w-full h-48 object-cover rounded-t-2xl" />
-              <div className="p-4">
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition duration-300">{course.name}</h3>
-                <p className="text-text mb-2">{course.domain}</p>
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-bold text-lg">${course.price}</span>
-                  <span className={`text-xs px-2 py-1 rounded-full ${course.courseType === 'Virtual' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}`}>
-                    {course.courseType}
-                  </span>
+              <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-lg">
+                <img src={course.coursePhoto} alt={course.name} className="w-full h-48 object-cover rounded-t-2xl" />
+                <div className="p-4 flex flex-col flex-grow">
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition duration-300">{course.name}</h3>
+                  <p className="text-text mb-2 flex-grow">{course.domain}</p>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="font-bold text-lg">${course.price}</span>
+                    <span className={`text-xs px-2 py-1 rounded-full ${course.courseType === 'Virtual' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}`}>
+                      {course.courseType}
+                    </span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600 mb-4">
+                    <Calendar size={16} className="mr-1" />
+                    <span>{t('startDate')}: {new Date(course.startDate).toLocaleDateString()}</span>
+                  </div>
+                  <Button 
+                    to={`/academy/${course.name.toLowerCase().replace(/\s+/g, '-')}`}
+                    variant="primary"
+                    className="mt-auto"
+                  >
+                    {t('apply')}
+                  </Button>
                 </div>
-                <div className="flex items-center text-sm text-gray-600 mb-4">
-                  <Calendar size={16} className="mr-1" />
-                  <span>{t('startDate')}: {new Date(course.startDate).toLocaleDateString()}</span>
-                </div>
-                <button 
-                  className="btn-primary text-sm px-4 py-2 w-full block text-center group-hover:bg-secondary transition duration-300"
-                  onClick={(e) => { 
-                    e.preventDefault(); 
-                    window.location.href = `/academy/${course.name.toLowerCase().replace(/\s+/g, '-')}`;
-                  }}
-                >
-                  {t('apply')}
-                </button>
-              </div>
-            </Link>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -98,9 +104,9 @@ const Academy: React.FC = () => {
         <p className="text-lg text-text mb-6">
           {t('takeAssessment')}
         </p>
-        <button className="btn-secondary inline-flex items-center hover:bg-primary hover:text-white transition duration-300">
+        <Button variant="secondary">
           {t('startAssessment')} <ArrowRight className="ml-2" size={20} />
-        </button>
+        </Button>
       </section>
     </div>
   )
