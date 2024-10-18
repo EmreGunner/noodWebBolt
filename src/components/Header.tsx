@@ -1,72 +1,83 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Icon from './Icon'
+import { Menu, X } from 'lucide-react'
 import Logo from './Logo'
+import Button from './Button'
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navItems = [
-    { to: "/academy", icon: "BookOpen", text: "Academy" },
-    { to: "/community", icon: "Users", text: "Community" },
-    { to: "/dashboard", icon: "User", text: "Dashboard" },
-    { to: "/blog", icon: "FileText", text: "Blog" },
+    { to: '/academy', text: 'Academy' },
+    { to: '/community', text: 'Community' },
+    { to: '/dashboard', text: 'Dashboard' },
+    { to: '/blog', text: 'Blog' },
   ]
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold text-primary">
-            <Logo />
-          </Link>
-          <nav className="hidden md:flex items-center space-x-6">
-            {navItems.map((item, index) => (
-              <Link 
-                key={index} 
-                to={item.to} 
-                className="text-text hover:text-primary transition duration-300 flex items-center border-b-2 border-transparent hover:border-primary"
-              >
-                <Icon name={item.icon as any} size={18} className="mr-1" />
-                {item.text}
-              </Link>
-            ))}
-            <Link to="/consultation" className="btn-primary">
-              Book Consultation
+    <header className="bg-white shadow-md">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <Link to="/" aria-label="Home">
+          <Logo />
+        </Link>
+        <nav className="hidden md:flex space-x-4" aria-label="Main navigation">
+          {navItems.map((item, index) => (
+            <Link 
+              key={index} 
+              to={item.to} 
+              className="text-text hover:text-primary transition duration-300"
+            >
+              {item.text}
             </Link>
-          </nav>
-          <button 
-            className="md:hidden text-text" 
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          >
-            <Icon name={isMenuOpen ? "X" : "Menu"} size={24} />
-          </button>
+          ))}
+        </nav>
+        <div className="hidden md:block">
+          <Button to="/consultation" variant="primary" ariaLabel="Book a consultation">
+            Book Consultation
+          </Button>
         </div>
-        {isMenuOpen && (
-          <nav className="md:hidden mt-4">
-            <ul className="flex flex-col space-y-2">
-              {navItems.map((item, index) => (
-                <li key={index}>
-                  <Link 
-                    to={item.to} 
-                    className="text-text hover:text-primary transition duration-300 flex items-center py-2 border-b border-accent" 
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <Icon name={item.icon as any} size={18} className="mr-2" />
-                    {item.text}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link to="/consultation" className="btn-primary block text-center mt-4" onClick={() => setIsMenuOpen(false)}>
-                  Book Consultation
+        <button 
+          className="md:hidden"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+      {isMenuOpen && (
+        <nav 
+          id="mobile-menu"
+          className="md:hidden mt-4 pb-4"
+          aria-label="Mobile navigation"
+        >
+          <ul className="flex flex-col space-y-2">
+            {navItems.map((item, index) => (
+              <li key={index}>
+                <Link 
+                  to={item.to} 
+                  className="block px-4 py-2 text-text hover:bg-accent hover:text-white transition duration-300" 
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.text}
                 </Link>
               </li>
-            </ul>
-          </nav>
-        )}
-      </div>
+            ))}
+            <li>
+              <Button 
+                to="/consultation" 
+                variant="primary" 
+                className="mx-4" 
+                fullWidth 
+                ariaLabel="Book a consultation"
+              >
+                Book Consultation
+              </Button>
+            </li>
+          </ul>
+        </nav>
+      )}
     </header>
   )
 }

@@ -1,39 +1,51 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const Hero: React.FC = () => {
   return (
-    <div className="relative w-full h-screen min-h-[600px] flex items-center">
+    <div className="relative min-h-screen bg-gradient-to-br from-primary to-secondary overflow-hidden">
       <div 
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://img-b.udemycdn.com/notices/web_carousel_slide/image/dc2e45a0-867c-45bf-badb-ca6637f41ed6.jpg')`,
+          backgroundImage: `url('/home/runner/noodWebBolt/Home.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       />
-      <div className="container mx-auto px-4 z-10 relative">
-        <motion.div 
-          className="max-w-xl"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-text">
-            Your Gateway to <span className="text-primary">Digital Success</span>
-          </h1>
-          <p className="text-lg md:text-xl mb-8 text-text">
-            Master digital skills for entrepreneurship with our expert-led courses
-          </p>
-          <Link 
-            to="/programs" 
-            className="btn-primary inline-flex items-center text-lg px-8 py-3 rounded-lg hover:bg-opacity-90 transition duration-300"
+      <div className="absolute inset-0 bg-black bg-opacity-50" /> {/* Overlay for better text readability */}
+      <div className="container mx-auto px-4 h-full flex items-center relative z-10">
+        <div className="w-full lg:w-1/2">
+          <motion.h1 
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white font-heading"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
           >
-            Explore Our Programs <ArrowRight className="ml-2" size={20} />
-          </Link>
-        </motion.div>
+            Create your Path to Digital Success
+          </motion.h1>
+          <motion.p 
+            className="text-lg md:text-xl mb-8 text-white"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Master digital skills for entrepreneurship with our expert-led courses and supportive community.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <Link 
+              to="/courses" 
+              className="bg-white text-primary font-bold py-3 px-8 rounded-full inline-flex items-center hover:bg-opacity-90 transition duration-300"
+            >
+              Explore Courses <ArrowRight className="ml-2" size={20} />
+            </Link>
+          </motion.div>
+        </div>
       </div>
     </div>
   )

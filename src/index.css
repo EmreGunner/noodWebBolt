@@ -9,7 +9,17 @@
   --text-color: #354b4e;
   --accent-color: #83bf75; /* Changed to secondary color for distinction */
 }
+@media (max-width: 1023px) {
+  .hero-section {
+    background-position: center right -200px;
+  }
+}
 
+@media (max-width: 639px) {
+  .hero-section {
+    background-position: center right -300px;
+  }
+}
 body {
   font-family: 'Open Sans', sans-serif; /* Placeholder for Scala Sans */
   color: var(--text-color);
@@ -140,17 +150,17 @@ h1, h2, h3, h4, h5, h6 {
   @apply font-bold leading-tight text-text;
 }
 
-h1 { @apply text-5xl mb-6; }
-h2 { @apply text-4xl mb-5; }
-h3 { @apply text-3xl mb-4; }
-h4 { @apply text-2xl mb-3; }
-h5 { @apply text-xl mb-2; }
-h6 { @apply text-lg mb-2; }
+h1 { @apply text-3xl sm:text-4xl md:text-5xl font-bold mb-4; }
+h2 { @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-3; }
+h3 { @apply text-xl sm:text-2xl md:text-3xl font-bold mb-2; }
+h4 { @apply text-lg sm:text-xl md:text-2xl font-semibold mb-2; }
+h5 { @apply text-base sm:text-lg md:text-xl font-semibold mb-2; }
+h6 { @apply text-sm sm:text-base md:text-lg font-semibold mb-2; }
 
-p { @apply text-base mb-4 leading-relaxed; }
+p { @apply text-base leading-relaxed mb-4; }
 
-.text-small { @apply text-sm; }
-.text-large { @apply text-lg; }
+.text-small { @apply text-xs sm:text-sm; }
+.text-large { @apply text-lg sm:text-xl; }
 
 /* Improved accessibility */
 .sr-only {
@@ -206,4 +216,87 @@ p { @apply text-base mb-4 leading-relaxed; }
 .responsive-grid {
   @apply grid gap-4;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Add to existing styles */
+:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.focus-visible:focus:not(:focus-visible) {
+  outline: none;
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-3d {
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d;
+  }
+
+  .card-3d:hover {
+    transform: rotateX(2deg) rotateY(2deg);
+  }
+}
+
+/* 3D Button Effect */
+.btn-3d {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.btn-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(3px);
+  transition: transform 0.3s ease;
+}
+
+.btn-3d:hover::before {
+  transform: translateY(0);
+}
+
+/* Glassmorphism effect */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.bg-cover {
+  background-size: cover;
+  background-position: center;
+}
+
+/* Add these styles to the end of your src/index.css file */
+
+@media (max-width: 640px) {
+  .bg-cover {
+    background-position: 70% center;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .bg-cover {
+    background-position: 60% center;
+  }
 }
