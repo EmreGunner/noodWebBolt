@@ -7,33 +7,32 @@ const StyledWrapper = styled.div`
  .custom-card {
  
   .parent   {
-    width: 600px !important;
-    max-width: 1200px !important;
-    aspect-ratio: 5 / 4 !important;
+    width: 500px !important;
+    height: 400px !important;
     perspective: 1000px !important;
   }
 
   .example-card {
-    height: 90% !important; 
-    border-radius: 1.5rem !important;
+    height: 100% !important; 
+    border-radius: 55px !important;
     background: linear-gradient(135deg, #83b775 0%, #4e9350 100%) !important;
     transition: all 0.5s ease-in-out !important;
     transform-style: preserve-3d !important;
-    box-shadow: rgba(5, 71, 17, 0.2) 0px 1rem 1.5rem -0.5rem !important;
+    box-shadow: rgba(5, 71, 17, 0.2) 0px 20px 30px -10px !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
-    padding: 1.5rem !important;
+    padding: 30px !important;
   }
 
   .glass {
     transform-style: preserve-3d !important;
     position: absolute !important;
-    inset: 0.5rem !important;
-    border-radius: 1.25rem !important;
+    inset: 10px !important;
+    border-radius: 25px !important;
     border-top-right-radius: 100% !important;
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%) !important;
-    transform: translate3d(0px, 0px, 1.25rem) !important;
+    transform: translate3d(0px, 0px, 25px) !important;
     border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
     transition: all 0.5s ease-in-out !important;

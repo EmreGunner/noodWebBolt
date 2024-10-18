@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
               Develop skills, start side hustles, and launch businesses with NOOD's expert-led courses and supportive community.
             </p>
             <Link 
-              to="/courses" 
+              to="/academy" 
               className="bg-[#4e9350] text-white font-['Scala_Sans_Bold_Italic'] py-3 px-8 rounded-full inline-flex items-center hover:bg-[#83b775] transition duration-300 text-lg shadow-lg hover:shadow-xl"
             >
               Explore Courses <ArrowRight className="ml-2" size={24} />
@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-           <Card / >
+            <Card />
           </motion.div>
         </div>
       </Container>
