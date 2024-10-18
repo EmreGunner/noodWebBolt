@@ -19,6 +19,12 @@ export default {
         background: '#f4f4f4',
         text: '#1D344B',
         accent: '#C44EFF',
+        'nood-green': '#4e9350',
+        'light-green': '#83b775',
+        'accent-green': '#e0e5ba',
+        'dark-grey': '#534b4e',
+        'dark-blue': '#0f172a',
+        'neon-green': '#39ff14',
       },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],

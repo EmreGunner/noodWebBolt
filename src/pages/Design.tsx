@@ -1,10 +1,14 @@
 import React from 'react';
-import Card from '../components/exampleCard';
+import ExampleCard from '../components/HeroCard';
+import Card from '../components/ExampleCard';
+import HeroTv from '../components/HeroTv';
+import NoodVideo from '../components/NoodVideo';
 
 const Design: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#e0e5ba]">
-        <Card />
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center ">
+      <ExampleCard />
+      <Card />
     </div>
   );
 };

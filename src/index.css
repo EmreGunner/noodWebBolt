@@ -51,8 +51,7 @@ body {
   }
 
   .card {
-    @apply bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 border border-accent;
-  }
+    }
 
   .card-hover {
     @apply hover:border-primary hover:scale-105 transform transition duration-300;
