@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Briefcase, ShoppingBag, Palette, TrendingUp, Languages, Cake } from 'lucide-react'
 import Container from './Container'
+import GlassCard from './GlassCard'
 
 const courses = [
   { icon: Briefcase, title: 'Fashion Business', description: 'Learn the ins and outs of the fashion industry.' },
@@ -14,20 +15,21 @@ const courses = [
 
 const CourseShowcase: React.FC = () => {
   return (
-    <Container className="py-16 bg-light-green">
+    <Container className="py-16">
       <h2 className="text-3xl font-bold mb-12 text-center text-nood-green">Our Courses</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {courses.map((course, index) => (
           <motion.div
-            key={index}
-            className="bg-white p-6 rounded-lg shadow-md"
+            key={course.title}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <course.icon className="text-nood-green mb-4" size={48} />
-            <h3 className="text-xl font-bold mb-2 text-dark-grey">{course.title}</h3>
-            <p className="text-dark-grey">{course.description}</p>
+            <GlassCard className="h-full flex flex-col items-center p-6 text-center">
+              <course.icon className="text-white mb-4" size={48} />
+              <h3 className="text-xl font-bold mb-2 text-white">{course.title}</h3>
+              <p className="text-white">{course.description}</p>
+            </GlassCard>
           </motion.div>
         ))}
       </div>
