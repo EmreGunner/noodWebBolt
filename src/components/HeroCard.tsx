@@ -7,18 +7,14 @@ const StyledWrapper = styled.div`
  .custom-card {
  
   .parent   {
-    width: 100% !important;
-    max-width: 1000px !important;
+    width: 600px !important;
+    max-width: 1200px !important;
     aspect-ratio: 5 / 4 !important;
     perspective: 1000px !important;
-     /* Media query to change width based on viewport */
-      @media (min-width: 1024px) {
-        width: 600px !important;
-      }
   }
 
   .example-card {
-    height: 100% !important; 
+    height: 90% !important; 
     border-radius: 1.5rem !important;
     background: linear-gradient(135deg, #83b775 0%, #4e9350 100%) !important;
     transition: all 0.5s ease-in-out !important;
