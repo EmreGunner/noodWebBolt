@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
 
 const Footer: React.FC = () => {
   return (
@@ -27,16 +26,12 @@ const Footer: React.FC = () => {
           </div>
           <div>
             <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
-            <div className="flex space-x-4">
-              <a href="#" className="hover:text-accent transition duration-300" aria-label="Facebook"><Facebook /></a>
-              <a href="#" className="hover:text-accent transition duration-300" aria-label="Twitter"><Twitter /></a>
-              <a href="#" className="hover:text-accent transition duration-300" aria-label="Instagram"><Instagram /></a>
-              <a href="#" className="hover:text-accent transition duration-300" aria-label="LinkedIn"><Linkedin /></a>
-            </div>
+            <ul className="space-y-2">
+              <li><a href="#" className="hover:text-accent transition duration-300">Facebook</a></li>
+              <li><a href="#" className="hover:text-accent transition duration-300">Twitter</a></li>
+              <li><a href="#" className="hover:text-accent transition duration-300">LinkedIn</a></li>
+            </ul>
           </div>
-        </div>
-        <div className="mt-8 pt-8 border-t border-accent border-opacity-20 text-center text-sm">
-          <p>&copy; 2023 NOOD. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -1,18 +1,26 @@
 import React from 'react'
 import Hero from '../components/Hero'
-import YouTubeVideo from '../components/YouTubeVideo'
-import CourseShowcase from '../components/CourseShowcase'
+import Testimonials from '../components/Testimonials'
 import Community from '../components/Community'
 import PhysicalOffice from '../components/PhysicalOffice'
+import Footer from '../components/Footer'
+
+
 
 const Home: React.FC = () => {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Hero />
-   
-      <CourseShowcase />
-      <Community />
-      <PhysicalOffice />
+      <section className="py-20 bg-gray-100">
+        <Testimonials />
+      </section>
+      <section className="py-20">
+        <Community />
+      </section>
+      <section className="py-20 bg-gray-100">
+        <PhysicalOffice />
+      </section>
+      <Footer />
     </div>
   )
 }
