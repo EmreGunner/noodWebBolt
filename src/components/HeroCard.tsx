@@ -3,46 +3,65 @@ import styled from "styled-components";
 
 
 const StyledWrapper = styled.div` 
-
+:root {
+  --nude-light: #f5eae0;  /* Light nude */
+  --nude-medium: #e8dcd0; /* Medium nude */
+  --nude-dark: #dccfc4;   /* Dark nude */
+  --white: #ffffff;
+}
  .custom-card {
  
   .parent   {
-    width: 600px !important;
+    width: 100% !important;
     max-width: 1200px !important;
-    aspect-ratio: 5 / 4 !important;
+    aspect-ratio: 16 / 9 !important;
     perspective: 1000px !important;
+      /* Media query to change width based on viewport */
+      @media (min-width: 1024px) {
+        width: 600px !important;
+      }
   }
 
   .example-card {
-    height: 90% !important; 
+    height: 100% !important; 
+    width: 100% !important;
     border-radius: 1.5rem !important;
-    background: linear-gradient(135deg, #83b775 0%, #4e9350 100%) !important;
-    transition: all 0.5s ease-in-out !important;
+ background: linear-gradient(135deg, #83b375 0%, #4e9350 100%) !important; /* NOOD colors */
+    transition: all 0.5s ease-in-out;
     transform-style: preserve-3d !important;
     box-shadow: rgba(5, 71, 17, 0.2) 0px 1rem 1.5rem -0.5rem !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
-    padding: 1.5rem !important;
+    padding: 2.5rem !important;
   }
 
-  .glass {
-    transform-style: preserve-3d !important;
-    position: absolute !important;
-    inset: 0.5rem !important;
-    border-radius: 1.25rem !important;
-    border-top-right-radius: 100% !important;
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%) !important;
-    transform: translate3d(0px, 0px, 1.25rem) !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-    transition: all 0.5s ease-in-out !important;
-  }
+/* Glass effect improvement for better depth */
+.glass {
+    position: absolute;
+    inset: 0.5rem;
+    border-radius: 2.25rem;
+    border-top-right-radius: 100%;
+    background: rgba(255, 255, 255, 0.3); /* Increased opacity for more visibility */
+    backdrop-filter: blur(25px); /* Adjusted blur for a balanced glassmorphism effect */
+    transform: translate3d(0px, 0px, 1.25rem);
+    border-left: 1px solid rgba(255, 255, 255, 0.3); /* Updated border color for consistency */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.5s ease-in-out;
+    transform-style: preserve-3d;
+}
 
   .content {
-    transform: translate3d(0, 0, 30px) !important;
-    z-index: 1 !important;
-  }
+    transform: translate3d(0, 0, 55px) !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+      align-items: center !important; /* Center content horizontally */
+    justify-content: center !important; /* Center content vertically */
+    text-align: center !important;
+    padding: 1.5rem; /* Added padding for a more spacious feel */
+
+     }
 
   .content .title {
     display: block !important;
@@ -63,21 +82,20 @@ const StyledWrapper = styled.div`
     margin-bottom: 30px !important;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1) !important;
   }
-
-  .video-container {
+ .video-container {
     margin-top: 20px !important;
-    border-radius: 15px !important;
+    border-radius: 20px !important;
     overflow: hidden !important;
     transform: translate3d(0, 0, 35px) !important;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
-    transition: all 0.3s ease-in-out !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3) !important;
+    transition: all 0.5s ease-in-out !important;
     aspect-ratio: 16 / 9 !important;
     width: 100% !important;
     z-index: 1 !important;
 
     &:hover {
-      transform: translate3d(0, -5px, 40px) !important;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3) !important;
+      transform: translate3d(0, -10px, 40px) scale(1.05) !important;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
     }
   }
 
@@ -98,9 +116,9 @@ const StyledWrapper = styled.div`
   }
 
   .social-buttons-container .social-button {
-    width: 40px !important;
-    height: 40px !important;
-    padding: 8px !important;
+    width: 55px !important;
+    height: 55px !important;
+    padding: 18px !important;
     background: rgba(255, 255, 255, 0.9) !important;
     border-radius: 50% !important;
     border: none !important;
@@ -128,8 +146,7 @@ const StyledWrapper = styled.div`
     transform-style: preserve-3d !important;
   }
 
-  .logo .circle {
-    display: block !important;
+  .star {
     position: absolute !important;
     aspect-ratio: 1 !important;
     border-radius: 50% !important;
@@ -139,17 +156,18 @@ const StyledWrapper = styled.div`
     backdrop-filter: blur(5px) !important;
     background: rgba(255, 255, 255, 0.1) !important;
     transition: all 0.5s ease-in-out !important;
+    
   }
 
-  .logo .circle1 {
-    width: 200px !important;
+  .star1 {
+    width: 120px !important;
     transform: translate3d(0, 0, 20px) !important;
     top: 10px !important;
     right: 10px !important;
   }
 
-  .logo .circle2 {
-    width: 160px !important;
+  .star2 {
+    width: 100px !important;
     transform: translate3d(0, 0, 40px) !important;
     top: 15px !important;
     right: 15px !important;
@@ -157,60 +175,69 @@ const StyledWrapper = styled.div`
     transition-delay: 0.4s !important;
   }
 
-  .logo .circle3 {
-    width: 120px !important;
+  .star3 {
+    width: 80px !important;
     transform: translate3d(0, 0, 60px) !important;
     top: 20px !important;
     right: 20px !important;
     transition-delay: 0.8s !important;
   }
 
-  .logo .circle4 {
-    width: 80px !important;
+  .star4 {
+    width: 60px !important;
     transform: translate3d(0, 0, 80px) !important;
     top: 25px !important;
     right: 25px !important;
     transition-delay: 1.2s !important;
   }
 
-  .logo .circle5 {
+  .star5 {
     width: 50px !important;
     transform: translate3d(0, 0, 100px) !important;
-    top: 35px !important;
-    right: 35px !important;
+    top: 30px !important;
+    right: 30px !important;
     display: grid !important;
     place-content: center !important;
     transition-delay: 1.6s !important;
   }
 
-  .logo .circle5 .svg {
-    width: 25px !important;
+  .star5 .svg {
+    width: 20px !important;
     fill: white !important;
   }
 
+ @keyframes wave-animation {
+    0% { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(-30px) translateY(-20px); }
+    100% { transform: translateX(0) translateY(0); }
+  }
+ @keyframes floatAnimation {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+  }
   .parent:hover .example-card {
-    transform: rotate3d(1, 1, 0, 15deg) !important;
-    box-shadow: rgba(5, 71, 17, 0.3) 30px 50px 25px -40px, rgba(5, 71, 17, 0.1) 0px 25px 30px 0px !important;
+    transform: rotate3d(1, 1, 0, 10deg) !important;
+    box-shadow: rgba(5, 71, 17, 0.3) 20px 40px 20px -30px, rgba(5, 71, 17, 0.1) 0px 20px 25px 0px !important;
   }
 
   .parent:hover .example-card .social-buttons-container .social-button {
-    transform: translateY(-5px) !important;
+    transform: translateY(-3px) !important;
   }
 
-  .parent:hover .example-card .logo .circle2 {
-    transform: translate3d(0, 0, 60px) !important;
+  .parent:hover .example-card .logo .star2 {
+    transform: translate3d(0, 0, 50px) !important;
   }
 
-  .parent:hover .example-card .logo .circle3 {
-    transform: translate3d(0, 0, 80px) !important;
+  .parent:hover .example-card .logo .star3 {
+    transform: translate3d(0, 0, 70px) !important;
   }
 
-  .parent:hover .example-card .logo .circle4 {
-    transform: translate3d(0, 0, 100px) !important;
+  .parent:hover .example-card .logo .star4 {
+    transform: translate3d(0, 0, 90px) !important;
   }
 
-  .parent:hover .example-card .logo .circle5 {
-    transform: translate3d(0, 0, 120px) !important;
+  .parent:hover .example-card .logo .star5 {
+    transform: translate3d(0, 0, 110px) !important;
   }
     }
 ` ;
@@ -222,20 +249,20 @@ const Card = () => {
        <div className="custom-card">
       <div className="parent">
         <div className="example-card">
-          <div className="logo">
-            <span className="circle circle1" />
-            <span className="circle circle2" />
-            <span className="circle circle3" />
-            <span className="circle circle4" />
-            <span className="circle circle5">
+        <div className="logo">
+            <span className="star star1" />
+            <span className="star star2" />
+            <span className="star star3" />
+            <span className="star star4" />
+            <span className="star star5">
             <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 200 200"
+    viewBox="0 0 24 24"
     className="svg"
 >
 
     <path
-        d="M100,30 C140,30 170,60 170,100 C170,140 140,170 100,170 C60,170 30,140 30,100 C30,60 60,30 100,30 Z"
+        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
         fill="#ffffff"
     />
 
@@ -246,6 +273,7 @@ const Card = () => {
 
             </span>
           </div>
+    
           <div className="glass" />
           <div className="content">
             <span className="text">

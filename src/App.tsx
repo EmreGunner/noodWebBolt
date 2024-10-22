@@ -5,7 +5,6 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import Academy from './pages/Academy'
 import Community from './pages/Community'
-import Dashboard from './pages/Dashboard'
 import Blog from './pages/Blog'
 import CourseDetail from './pages/CourseDetail'
 import Design from './pages/Design'
@@ -21,7 +20,6 @@ const App: React.FC = () => {
             <Route path="/academy" element={<Academy />} />
             <Route path="/academy/:courseName" element={<CourseDetail />} />
             <Route path="/community" element={<Community />} />
-            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/design" element={<Design />} />
           </Routes>

@@ -8,9 +8,8 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navItems = [
-    { to: '/academy', text: 'Academy' },
+    { to: '/academy', text: 'Courses' },
     { to: '/community', text: 'Community' },
-    { to: '/dashboard', text: 'Dashboard' },
     { to: '/blog', text: 'Blog' },
   ]
 
