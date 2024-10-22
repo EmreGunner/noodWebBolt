@@ -8,9 +8,12 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navItems = [
-    { to: '/academy', text: 'Courses' },
-    { to: '/community', text: 'Community' },
-    { to: '/blog', text: 'Blog' },
+    { to: '/', text: 'Home' },
+    { to: '/about', text: 'About us' },
+    { to: '/courses', text: 'Courses' },
+    { to: '/contact', text: 'Contact us' },
+    { to: '/career', text: 'Career' },
+    { to: '/faq', text: "FAQ's" },
   ]
 
   return (
@@ -19,7 +22,7 @@ const Header: React.FC = () => {
         <Link to="/" aria-label="Home">
           <Logo />
         </Link>
-        <nav className="hidden md:flex space-x-4" aria-label="Main navigation">
+        <nav className="hidden lg:flex space-x-6" aria-label="Main navigation">
           {navItems.map((item, index) => (
             <Link 
               key={index} 
@@ -30,13 +33,13 @@ const Header: React.FC = () => {
             </Link>
           ))}
         </nav>
-        <div className="hidden md:block">
-          <Button to="/consultation" variant="primary" ariaLabel="Book a consultation">
+        <div className="hidden lg:block">
+          <Button to="/consultation" variant="primary" className="rounded-full">
             Book Consultation
           </Button>
         </div>
         <button 
-          className="md:hidden"
+          className="lg:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
@@ -48,7 +51,7 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <nav 
           id="mobile-menu"
-          className="md:hidden mt-4 pb-4"
+          className="lg:hidden mt-4 pb-4"
           aria-label="Mobile navigation"
         >
           <ul className="flex flex-col space-y-2">
@@ -67,9 +70,8 @@ const Header: React.FC = () => {
               <Button 
                 to="/consultation" 
                 variant="primary" 
-                className="mx-4" 
-                fullWidth 
-                ariaLabel="Book a consultation"
+                className="mx-4 rounded-full" 
+                fullWidth
               >
                 Book Consultation
               </Button>

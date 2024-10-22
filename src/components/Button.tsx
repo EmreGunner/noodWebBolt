@@ -2,35 +2,29 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface ButtonProps {
+  to: string;
+  variant: 'primary' | 'secondary' | 'outline';
   children: React.ReactNode;
-  to?: string;
-  onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'outline';
   className?: string;
+  fullWidth?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, to, onClick, variant = 'primary', className = '' }) => {
-  const baseClasses = 'btn-3d inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold transition duration-300 focus:outline-none focus:ring-2 focus:ring-opacity-50';
+const Button: React.FC<ButtonProps> = ({ to, variant, children, className = '', fullWidth = false }) => {
+  const baseClasses = 'px-6 py-3 font-semibold transition duration-300 focus:outline-none focus:ring-2 focus:ring-opacity-50';
   const variantClasses = {
-    primary: 'bg-primary text-white hover:bg-opacity-90',
-    secondary: 'bg-white text-primary border-2 border-primary hover:bg-accent hover:text-white',
+    primary: 'bg-primary text-white hover:bg-secondary focus:ring-primary',
+    secondary: 'bg-white text-primary border-2 border-primary hover:bg-accent hover:border-secondary hover:text-secondary',
     outline: 'bg-transparent text-primary border-2 border-primary hover:bg-primary hover:text-white',
   };
 
-  const classes = `${baseClasses} ${variantClasses[variant]} ${className}`;
+  const widthClass = fullWidth ? 'w-full' : '';
 
-  if (to) {
-    return (
-      <Link to={to} className={classes}>
-        {children}
-      </Link>
-    );
-  }
+  const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${widthClass} ${className}`;
 
   return (
-    <button onClick={onClick} className={classes}>
+    <Link to={to} className={combinedClasses}>
       {children}
-    </button>
+    </Link>
   );
 };
 

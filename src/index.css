@@ -288,14 +288,37 @@ p { @apply text-base leading-relaxed mb-4; }
 
 /* Add these styles to the end of your src/index.css file */
 
-@media (max-width: 640px) {
-  .bg-cover {
-    background-position: 70% center;
-  }
+.navbar-link {
+  @apply text-text hover:text-primary transition duration-300;
 }
 
-@media (min-width: 641px) and (max-width: 1024px) {
-  .bg-cover {
-    background-position: 60% center;
+.navbar-button {
+  @apply px-4 py-2 rounded-full bg-primary text-white hover:bg-secondary transition duration-300;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu {
+    @apply fixed inset-0 z-50 bg-white;
+  }
+
+  .mobile-menu-enter {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  .mobile-menu-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+
+  .mobile-menu-exit {
+    opacity: 1;
+  }
+
+  .mobile-menu-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
   }
 }
